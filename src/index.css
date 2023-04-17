@@ -1,13 +1,136 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: "Righteous", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: gray;
+}
+
+.card {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card_back,
+.card_front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+  backface-visibility: hidden;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.card_front {
+  background-color: rgb(44, 44, 44);
+  transform: rotateY(180deg);
+}
+
+.card_back {
+  background-color: rgb(26, 26, 26);
+  color: rgb(156, 156, 156);
+  font-size: 30px;
+}
+
+.icon {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.icon_basic {
+  max-width: 70%;
+  max-height: 70%;
+}
+
+#gameOver {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  color: white;
+  font-size: 50px;
+  /*display: none;*/
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+}
+
+#restart {
+  padding: 20px;
+  font-size: 20px;
+  font-family: "Righteous", sans-serif;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: font-size 0.5s;
+}
+
+#restart:hover{
+  background-color: yellow;
+  cursor: pointer;
+  font-size: 25px;
+}
+
+#gameBoard {
+  max-width: 1400px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr/ 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media only screen and (max-width: 700px) {
+  #gameBoard {
+      max-width: 500px;
+      grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+      gap: 10px;
+  }
+  .card {
+      width: 70px;
+      height: 70px;
+  }
+
+  .card_back{
+      font-size: 20px;
+      text-align: center;
+  }
+  .icon {
+      max-width: 90%;
+      max-height: 90%;
+  }
+
+  .card_front,
+  .card_back {
+      border-radius: 10px;
+  }
+
+  #gameOver{
+      font-size: 30px;
+      padding: 10px;
+      text-align: center;
+  }
+
+  #restart{
+      padding: 10px;
+  }
 }
